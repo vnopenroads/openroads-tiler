@@ -18,11 +18,6 @@ jobs:
             - ~/project
       - setup_remote_docker
       - run:
-          name: Install dependencies
-          command: |
-            apk add --no-cache py-pip=9.0.0-r1
-            pip install docker-compose==1.16.0
-      - run:
           name: Load Docker image layer cache
           command: |
             set +o pipefail
@@ -40,4 +35,5 @@ jobs:
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
               docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
               docker tag project:latest developmentseed/openroads-tiler:latest
+              docker push
             fi
