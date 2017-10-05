@@ -35,5 +35,5 @@ jobs:
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
               docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
               docker tag project:latest developmentseed/openroads-tiler:latest
-              docker push
+              docker push developmentseed/openroads-tiler:latest
             fi
